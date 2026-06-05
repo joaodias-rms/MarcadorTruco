@@ -1,0 +1,23 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.MarcadorTruco" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/truco_primary</item>
+        <item name="colorPrimaryDark">@color/truco_primary_dark</item>
+        <item name="colorOnPrimary">@color/truco_on_primary</item>
+        <item name="colorPrimaryContainer">@color/truco_primary_container</item>
+        <item name="colorSecondary">@color/truco_secondary</item>
+        <item name="android:colorAccent">@color/truco_primary</item>
+        <item name="android:windowBackground">@color/truco_background</item>
+        <item name="android:navigationBarColor">@color/truco_background</item>
+        <item name="android:statusBarColor">@color/truco_background</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="materialButtonStyle">@style/Widget.MarcadorTruco.Button</item>
+    </style>
+
+    <style name="Theme.MarcadorTruco" parent="Base.Theme.MarcadorTruco" />
+
+    <style name="Widget.MarcadorTruco.Button" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/truco_primary</item>
+        <item name="android:textColor">@color/truco_on_primary</item>
+    </style>
+</resources>

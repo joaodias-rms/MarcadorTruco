@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="truco_primary">#357920</color>
+    <color name="truco_primary_dark">#255A16</color>
+    <color name="truco_primary_container">#D8F2CF</color>
+    <color name="truco_secondary">#795B20</color>
+    <color name="truco_background">#F7F4EA</color>
+    <color name="truco_surface">#FFFDF5</color>
+    <color name="truco_text">#263238</color>
+    <color name="truco_text_secondary">#5D6D60</color>
+    <color name="truco_player_one">#1B5E20</color>
+    <color name="truco_player_two">#B71C1C</color>
+    <color name="truco_on_primary">#FFFFFFFF</color>
+</resources>

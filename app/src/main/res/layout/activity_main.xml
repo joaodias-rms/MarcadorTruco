@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/truco_background"
+    android:fillViewport="true"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/textTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_title"
+            android:textColor="@color/truco_text"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textAviso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@string/match_limit_message"
+            android:textColor="@color/truco_text_secondary"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textNomeJogador1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/default_player_1"
+                    android:textColor="@color/truco_player_one"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textPontosJogador1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/score_zero"
+                    android:textColor="@color/truco_text"
+                    android:textSize="64sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/buttonJ1Mais1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_one_point" />
+
+                <Button
+                    android:id="@+id/buttonJ1Mais3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_three_points" />
+
+                <Button
+                    android:id="@+id/buttonJ1Mais6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_six_points" />
+
+                <Button
+                    android:id="@+id/buttonJ1Mais9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_nine_points" />
+
+                <Button
+                    android:id="@+id/buttonJ1Mais12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_twelve_points" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textNomeJogador2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/default_player_2"
+                    android:textColor="@color/truco_player_two"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textPontosJogador2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/score_zero"
+                    android:textColor="@color/truco_text"
+                    android:textSize="64sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/buttonJ2Mais1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_one_point" />
+
+                <Button
+                    android:id="@+id/buttonJ2Mais3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_three_points" />
+
+                <Button
+                    android:id="@+id/buttonJ2Mais6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_six_points" />
+
+                <Button
+                    android:id="@+id/buttonJ2Mais9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_nine_points" />
+
+                <Button
+                    android:id="@+id/buttonJ2Mais12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_twelve_points" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:columnCount="2"
+            android:useDefaultMargins="true">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonHistorico"
+                android:layout_width="0dp"
+                android:layout_height="72dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:gravity="center"
+                android:text="@string/history_button"
+                android:textColor="@color/truco_on_primary"
+                app:icon="@drawable/ic_history"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                app:iconTint="@color/truco_on_primary" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonInformarNomes"
+                android:layout_width="0dp"
+                android:layout_height="72dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:gravity="center"
+                android:text="@string/set_names_button"
+                android:textColor="@color/truco_on_primary"
+                app:icon="@drawable/ic_edit"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                app:iconTint="@color/truco_on_primary" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonDesfazerJogada"
+                android:layout_width="0dp"
+                android:layout_height="72dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:gravity="center"
+                android:text="@string/undo_last_play_button"
+                android:textColor="@color/truco_on_primary"
+                app:icon="@drawable/ic_undo"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                app:iconTint="@color/truco_on_primary" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonZerarHistorico"
+                android:layout_width="0dp"
+                android:layout_height="72dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:gravity="center"
+                android:text="@string/reset_history_button"
+                android:textColor="@color/truco_on_primary"
+                app:icon="@drawable/ic_reset"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                app:iconTint="@color/truco_on_primary" />
+        </GridLayout>
+    </LinearLayout>
+</ScrollView>
