@@ -2,6 +2,7 @@ package com.project.marcadortruco
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.view.animation.OvershootInterpolator
 import android.widget.TextView
 import android.widget.Toast
@@ -102,8 +103,10 @@ class MainActivity : AppCompatActivity() {
                 )
             )
             .setPositiveButton(R.string.confirm_win_button) { _, _ ->
+                val liderAnterior = obterLiderHistorico()
                 GameState.confirmarVitoria(jogador)
                 atualizarTela()
+                mostrarToastMudancaHistorico(liderAnterior)
             }
             .setNegativeButton(R.string.undo_last_play_button) { _, _ ->
                 GameState.desfazerUltimaJogada()
@@ -141,6 +144,7 @@ class MainActivity : AppCompatActivity() {
             getString(R.string.score_progress_format, GameState.pontosJogador2)
         binding.progressJogador1.setProgress(GameState.pontosJogador1, true)
         binding.progressJogador2.setProgress(GameState.pontosJogador2, true)
+        atualizarHistoricoVisual()
     }
 
     private fun animarPlacar(textView: TextView) {
@@ -160,5 +164,62 @@ class MainActivity : AppCompatActivity() {
                     .start()
             }
             .start()
+    }
+
+    private fun atualizarHistoricoVisual() {
+        val totalPartidas = GameState.vitoriasJogador1 + GameState.vitoriasJogador2
+        val winrateJogador1 = calcularPorcentagem(GameState.vitoriasJogador1, totalPartidas)
+        val winrateJogador2 = calcularPorcentagem(GameState.vitoriasJogador2, totalPartidas)
+        val derrotasJogador1 = calcularPorcentagem(GameState.vitoriasJogador2, totalPartidas)
+        val derrotasJogador2 = calcularPorcentagem(GameState.vitoriasJogador1, totalPartidas)
+
+        binding.textWinrateJogador1.text =
+            getString(R.string.winrate_format, winrateJogador1, derrotasJogador1)
+        binding.textWinrateJogador2.text =
+            getString(R.string.winrate_format, winrateJogador2, derrotasJogador2)
+
+        binding.imageCoroaJogador1.visibility =
+            if (GameState.vitoriasJogador1 > GameState.vitoriasJogador2) View.VISIBLE else View.GONE
+        binding.imageCoroaJogador2.visibility =
+            if (GameState.vitoriasJogador2 > GameState.vitoriasJogador1) View.VISIBLE else View.GONE
+    }
+
+    private fun calcularPorcentagem(valor: Int, total: Int): Int {
+        if (total == 0) return 0
+        return ((valor.toFloat() / total) * 100).toInt()
+    }
+
+    private fun mostrarToastMudancaHistorico(liderAnterior: Int) {
+        val liderAtual = obterLiderHistorico()
+        if (liderAtual == liderAnterior) return
+
+        when (liderAtual) {
+            1 -> Toast.makeText(
+                this,
+                getString(R.string.leader_toast, GameState.nomeJogador1),
+                Toast.LENGTH_LONG
+            ).show()
+
+            2 -> Toast.makeText(
+                this,
+                getString(R.string.leader_toast, GameState.nomeJogador2),
+                Toast.LENGTH_LONG
+            ).show()
+
+            0 -> {
+                val totalPartidas = GameState.vitoriasJogador1 + GameState.vitoriasJogador2
+                if (totalPartidas > 0) {
+                    Toast.makeText(this, R.string.wins_tied_toast, Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
+
+    private fun obterLiderHistorico(): Int {
+        return when {
+            GameState.vitoriasJogador1 > GameState.vitoriasJogador2 -> 1
+            GameState.vitoriasJogador2 > GameState.vitoriasJogador1 -> 2
+            else -> 0
+        }
     }
 }

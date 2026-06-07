@@ -3,6 +3,7 @@
     <string name="app_title">Marcador de Truco</string>
     <string name="match_limit_message">A partida fecha com 12 pontos</string>
     <string name="score_progress_format">%1$d/12</string>
+    <string name="winrate_format">V %1$d%% / D %2$d%%</string>
     <string name="default_player_1">Jogador 1</string>
     <string name="default_player_2">Jogador 2</string>
     <string name="score_zero">0</string>
@@ -38,5 +39,7 @@
     <string name="end_match_title">Fim da partida</string>
     <string name="winner_message">%1$s ganhou a partida!\n\nPlacar final: %2$s %3$d - %4$d %5$s</string>
     <string name="confirm_win_button">Confirmar vitória</string>
+    <string name="leader_toast">%1$s assumiu o posto de maior vencedor!</string>
+    <string name="wins_tied_toast">O número de vitórias está empatado.</string>
     <string name="ok_button">OK</string>
 </resources>

@@ -59,17 +59,36 @@
                     android:orientation="vertical"
                     android:padding="12dp">
 
-                    <TextView
-                        android:id="@+id/textNomeJogador1"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:ellipsize="end"
                         android:gravity="center"
-                        android:maxLines="1"
-                        android:text="@string/default_player_1"
-                        android:textColor="@color/truco_player_one"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textNomeJogador1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="@string/default_player_1"
+                            android:textColor="@color/truco_player_one"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/imageCoroaJogador1"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="4dp"
+                            android:contentDescription="@null"
+                            android:src="@drawable/ic_crown"
+                            android:visibility="gone"
+                            app:tint="@color/truco_secondary"
+                            tools:visibility="visible" />
+                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/textPontosJogador1"
@@ -100,6 +119,15 @@
                         app:trackColor="@color/truco_surface_variant"
                         app:trackThickness="7dp"
                         tools:progress="6" />
+
+                    <TextView
+                        android:id="@+id/textWinrateJogador1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textColor="@color/truco_text_secondary"
+                        android:textSize="12sp"
+                        tools:text="V 60% / D 40%" />
 
                     <GridLayout
                         android:layout_width="match_parent"
@@ -172,17 +200,36 @@
                     android:orientation="vertical"
                     android:padding="12dp">
 
-                    <TextView
-                        android:id="@+id/textNomeJogador2"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:ellipsize="end"
                         android:gravity="center"
-                        android:maxLines="1"
-                        android:text="@string/default_player_2"
-                        android:textColor="@color/truco_player_two"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textNomeJogador2"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="@string/default_player_2"
+                            android:textColor="@color/truco_player_two"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/imageCoroaJogador2"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="4dp"
+                            android:contentDescription="@null"
+                            android:src="@drawable/ic_crown"
+                            android:visibility="gone"
+                            app:tint="@color/truco_secondary"
+                            tools:visibility="visible" />
+                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/textPontosJogador2"
@@ -213,6 +260,15 @@
                         app:trackColor="@color/truco_surface_variant"
                         app:trackThickness="7dp"
                         tools:progress="4" />
+
+                    <TextView
+                        android:id="@+id/textWinrateJogador2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textColor="@color/truco_text_secondary"
+                        android:textSize="12sp"
+                        tools:text="V 40% / D 60%" />
 
                     <GridLayout
                         android:layout_width="match_parent"
