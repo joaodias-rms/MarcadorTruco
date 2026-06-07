@@ -2,6 +2,8 @@ package com.project.marcadortruco
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.animation.OvershootInterpolator
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
@@ -39,12 +41,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.buttonZerarHistorico.setOnClickListener {
-            GameState.zerarTudo(
-                getString(R.string.default_player_1),
-                getString(R.string.default_player_2)
-            )
-            atualizarTela()
-            Toast.makeText(this, R.string.history_reset_toast, Toast.LENGTH_SHORT).show()
+            confirmarZerarTudo()
         }
 
         binding.buttonDesfazerJogada.setOnClickListener {
@@ -79,6 +76,7 @@ class MainActivity : AppCompatActivity() {
     private fun somarPontos(jogador: Int, pontos: Int) {
         GameState.somarPontos(jogador, pontos)
         atualizarTela()
+        animarPlacar(if (jogador == 1) binding.textPontosJogador1 else binding.textPontosJogador2)
 
         if (jogador == 1 && GameState.pontosJogador1 >= 12) {
             mostrarAlertaVitoria(GameState.nomeJogador1, 1)
@@ -116,10 +114,51 @@ class MainActivity : AppCompatActivity() {
             .show()
     }
 
+    private fun confirmarZerarTudo() {
+        AlertDialog.Builder(this)
+            .setTitle(R.string.reset_confirm_title)
+            .setMessage(R.string.reset_confirm_message)
+            .setPositiveButton(R.string.reset_confirm_button) { _, _ ->
+                GameState.zerarTudo(
+                    getString(R.string.default_player_1),
+                    getString(R.string.default_player_2)
+                )
+                atualizarTela()
+                Toast.makeText(this, R.string.history_reset_toast, Toast.LENGTH_SHORT).show()
+            }
+            .setNegativeButton(R.string.cancel_button, null)
+            .show()
+    }
+
     private fun atualizarTela() {
         binding.textNomeJogador1.text = GameState.nomeJogador1
         binding.textNomeJogador2.text = GameState.nomeJogador2
         binding.textPontosJogador1.text = GameState.pontosJogador1.toString()
         binding.textPontosJogador2.text = GameState.pontosJogador2.toString()
+        binding.textProgressoJogador1.text =
+            getString(R.string.score_progress_format, GameState.pontosJogador1)
+        binding.textProgressoJogador2.text =
+            getString(R.string.score_progress_format, GameState.pontosJogador2)
+        binding.progressJogador1.setProgress(GameState.pontosJogador1, true)
+        binding.progressJogador2.setProgress(GameState.pontosJogador2, true)
+    }
+
+    private fun animarPlacar(textView: TextView) {
+        textView.animate().cancel()
+        textView.scaleX = 1f
+        textView.scaleY = 1f
+        textView.animate()
+            .scaleX(1.16f)
+            .scaleY(1.16f)
+            .setDuration(120)
+            .setInterpolator(OvershootInterpolator())
+            .withEndAction {
+                textView.animate()
+                    .scaleX(1f)
+                    .scaleY(1f)
+                    .setDuration(120)
+                    .start()
+            }
+            .start()
     }
 }

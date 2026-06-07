@@ -6,12 +6,15 @@ import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.StyleSpan
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.project.marcadortruco.databinding.ActivityHistoryBinding
+import com.google.android.material.card.MaterialCardView
+import androidx.core.view.isGone
 
 class HistoryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHistoryBinding
@@ -52,10 +55,26 @@ class HistoryActivity : AppCompatActivity() {
             textView.text = criarTextoPartida(index + 1, partida)
             textView.textSize = 18f
             textView.setTextColor(getColor(R.color.truco_text))
-            textView.setPadding(0, 8, 0, 8)
-            binding.layoutPartidas.addView(textView)
+            textView.setPadding(dp(16), dp(14), dp(16), dp(14))
+
+            val card = MaterialCardView(this)
+            card.setCardBackgroundColor(getColor(R.color.truco_surface))
+            card.strokeColor = getColor(R.color.truco_outline)
+            card.strokeWidth = dp(1)
+            card.radius = dp(8).toFloat()
+            card.addView(textView)
+
+            val params = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+            params.setMargins(0, dp(6), 0, dp(6))
+            binding.layoutPartidas.addView(card, params)
         }
     }
+
+    private fun dp(value: Int): Int =
+        (value * resources.displayMetrics.density).toInt()
 
     private fun criarTextoPartida(numeroPartida: Int, partida: GameState.Partida): SpannableString {
         val texto = getString(
@@ -86,7 +105,7 @@ class HistoryActivity : AppCompatActivity() {
     }
 
     private fun alternarPartidas() {
-        val deveMostrar = binding.layoutPartidas.visibility == View.GONE
+        val deveMostrar = binding.layoutPartidas.isGone
         binding.layoutPartidas.visibility = if (deveMostrar) View.VISIBLE else View.GONE
         binding.buttonExpandirPartidas.setText(
             if (deveMostrar) {

@@ -2,6 +2,7 @@
     <string name="app_name">MarcadorTruco</string>
     <string name="app_title">Marcador de Truco</string>
     <string name="match_limit_message">A partida fecha com 12 pontos</string>
+    <string name="score_progress_format">%1$d/12</string>
     <string name="default_player_1">Jogador 1</string>
     <string name="default_player_2">Jogador 2</string>
     <string name="score_zero">0</string>
@@ -28,6 +29,9 @@
     <string name="confirm_button">Confirmar</string>
     <string name="cancel_button">Cancelar</string>
     <string name="history_reset_toast">Histórico reiniciado</string>
+    <string name="reset_confirm_title">Zerar tudo?</string>
+    <string name="reset_confirm_message">Pontuação, partidas registradas e nomes voltam ao início.</string>
+    <string name="reset_confirm_button">Zerar</string>
     <string name="undo_last_play_button">Desfazer última jogada</string>
     <string name="undo_score_toast">Última jogada desfeita</string>
     <string name="no_score_to_undo_toast">Nenhuma jogada para desfazer</string>
